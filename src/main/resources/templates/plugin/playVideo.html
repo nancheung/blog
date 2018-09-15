@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head th:replace="blog/part/head :: head"></head>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/load.css">
+    <meta name="baidu-site-verification" content="Fy64FvXyOO" />
+    <meta name="baidu-site-verification" content="fFLNj5L5GW" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" charset="UTF-8">
+    <style>
+        html, body {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<label>
+    <span style="color: red;" id="titleName"></span>
+    请输入播放地址：
+    <input type="text" id="playUrl">
+    <button type="button" onclick="ok()">播放</button>
+</label>
+<br>
+
+<IFRAME allowfullscreen src="" frameborder="0" style="width: 100%;height: 80%;background:#aaa" id="iframeId"></IFRAME>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/article.click.js"></script>
+<script src="/js/share.js"></script>
+<script src="/js/jqPaginator.min.js"></script>
+<script src="/admin/js/plugins/chosen/chosen.jquery.js"></script>
+<!-- Custom Scripts -->
+<script src="/js/insight.js"></script>
+<script src="/js/lightgallery.min.js"></script>
+<script src="/js/main.js"></script>
+<script>
+    console.log("添加书签可以一键播放哦~\n" +
+        "javascript:(function () {\n" +
+        "        let href = window.location.href;\n" +
+        "        let title = document.title;\n" +
+        "        if (href !== null && href !== \"\"&&href!==\"about:blank\") {\n" +
+        "            window.open(\"http://blog.nancheung.com/playVideo.html?url=\" + href + \"&title=\" + encodeURI(encodeURI(title)));\n" +
+        "        }else {\n" +
+        "            alert(\"未获取到网址，请打开欲播放的网页或等待网页完全加载\")\n" +
+        "        }\n" +
+        "    })();");
+
+    /**
+     *  初始化url信息
+     */
+    let url = getQueryString("url");
+    let title = decodeURI(getQueryString("title"));
+    if (url !== null && url !== "") {
+        $("#playUrl").attr("value", url);
+        play(url);
+        if (title !== null && title !== "") {
+            $("#titleName").html(title)
+        }
+    }
+
+    /**
+     * 获取URL中指定参数
+     * @param name 参数名称
+     * @returns {*} 参数值
+     */
+    function getQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+
+    /**
+     * 点击播放
+     */
+    function ok() {
+        let playUrl = $("#playUrl").val();
+        if (playUrl !== null && playUrl !== "") {
+            play(playUrl);
+        } else {
+            alert("请输入需要破解的地址")
+        }
+    }
+
+    /**
+     * 设置播放URL
+     * @param url 欲播放的地址
+     */
+    function play(url) {
+        let $iframe = $("#iframeId");
+        $iframe.attr('src', 'http://yun.baiyug.cn/vip/index.php?url=' + url);
+    }
+
+    function removeAD() {
+        let body = window.frames.document.getElementById("iframe").innerHTML;
+        var reg = "<a.*.eguu.*</a>";
+        body.replace(reg, "");
+        alert("aa");
+    }
+</script>
+</body>
+</html>
