@@ -219,7 +219,7 @@ public class PageController {
      *
      * @param model model对象
      */
-    private void loadCommonInfo(Model model) {
+    public void loadCommonInfo(Model model) {
         
         List<Partner> partnerList = partnerService.findAll();
         List<CategoryCustom> categoryList = categoryService.initCategoryList();
