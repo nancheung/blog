@@ -6,6 +6,8 @@
 
 *.iml
 *.yml
+
+application.yml.Bak
 *MP*.txt
 
 .idea
