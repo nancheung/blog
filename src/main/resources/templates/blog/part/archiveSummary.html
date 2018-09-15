@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+  ~   Copyright 2016-2017. the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  ~
+  -->
+
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<div class="timeline timeline-wrap" th:fragment="archive-summary">
+    <div class="timeline-row timeline-row-major">
+        <span class="node"><i class="fa fa-calendar"></i></span>
+        <h1 class="title" th:text="${createTime}"></h1>
+    </div>
+
+    <div th:each="article: ${articleList}">
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
+
+
+                <h1 itemprop="name">
+                    <a class="timeline-article-title" th:href="'/article/details/'+${article.id}" th:text="${article.title}"></a>
+                </h1>
+
+
+                <div class="article-meta">
+
+                    <div class="article-date">
+                        <i class="fa fa-calendar"></i>
+                        <a th:href="'/article/details/'+${article.id}">
+                            <time datetime="2018-04-03" itemprop="datePublished" th:text="${#dates.format(article.createTime,'yyyy-MM-dd')}"></time>
+                        </a>
+                    </div>
+
+                <!--    <div class="article-category" style="text-transform: none;">
+                        <i class="fa fa-folder"></i>
+                        <a class="article-category-link" th:href="'/category/details/'+${article.categoryId}" th:text="${article.categoryName}" ></a>
+                    </div>
+
+                    <div class="share-container" style="text-transform: none;" th:each="tag : ${article.tagList}">
+                        <i class="fa fa-tag"></i>
+                        <a class="tag-link"  th:href="'/tag/details/'+${tag.tagId}" th:text="${tag.tagName}"></a>
+                    </div>-->
+
+                    <div class="article-category" style="text-transform: none;">
+                        <i class="fa fa-folder"></i>
+                        <!--th:href="'/category/details/'+${article.categoryId}"-->
+                        <a class="article-category-link"  th:data-id="${article.categoryId}" th:text="${article.categoryName}" style="cursor: pointer"></a>
+                    </div>
+
+                    <div class="share-container" style="text-transform: none;" th:each="tag : ${article.tagList}">
+                        <i class="fa fa-tag"></i>
+                        <!--th:href="'/tag/details/'+${tag.tagId}"-->
+                        <a class="article-tag-link" th:data-id="${tag.tagId}"  th:text="${tag.tagName}" style="cursor: pointer"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</html>
+

@@ -1,0 +1,17 @@
+<!--格言-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<body>
+    <div class="widget-wrap" th:fragment="aphorism">
+        <h3 class="follow">与君共勉</h3>
+        <div class="widget">
+            <div class="card-front animated col s12 m12 l8 offset-l2 fadeInUp bg-aphorism">
+                <p class="bg-danger">
+                    <span th:utext="${userInfo.motto}"></span>
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

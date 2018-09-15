@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <title>NanCheung | 博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description" content="没有行动，世界只是一个观念。本站是使用 SpringBoot SpringSecurity Mybatis-Plus thymeleaf hexoScheme 构建的个人博客系统">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NanCheung | 博客">
+    <meta property="og:url" content="http://blog.nancheung.com">
+    <meta property="og:site_name" content="NanCheung | 博客">
+    <meta property="og:description" content="没有行动，世界只是一个观念。本站是使用 SpringBoot SpringSecurity Mybatis-Plus thymeleaf hexoScheme 构建的个人博客系统">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="NanCheung | 博客">
+    <meta name="twitter:description" content="没有行动，世界只是一个观念。本站是使用 SpringBoot SpringSecurity Mybatis-Plus thymeleaf hexoScheme 构建的个人博客系统">
+    <meta name="keywords" content="Spring Boot, Spring,Linux,Java,Hadoop"/>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/about.me.css">
+    <style>
+        a {
+            color: #000;
+        }
+
+        #footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            background-color: #fbfffc;
+        }
+
+        body {
+            height: 100%;
+        }
+
+        .main {
+            position: relative;
+
+        }
+
+    </style>
+
+    <!--&lt;!&ndash;百度自动推送&ndash;&gt;-->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+    <!--&lt;!&ndash;百度统计&ndash;&gt;-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?a0a46d3006c2015a637593cc7d115ed9";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+</head>
+
+<body>
+<header id="header" th:replace="blog/part/header :: header">
+</header>
+<div class="main">
+
+    <div class="account">
+        <div class="account-info">
+            <div class="account-top">
+                <div class="account-top-left">
+                    <a href="/login"><img th:src="${userInfo.avatar}"></a>
+                </div>
+                <!--<div class="account-top-right">
+                    <h2>李靖 </h2>
+                    <p>java Developer</p>
+                </div>-->
+                <div class="clear"></div>
+            </div>
+            <div class="account-bottom">
+                <div class="tabs">
+                    <nav>
+                        <a><span> </span>简介</a>
+                        <a><span class="icon1"></span>技能</a>
+                        <a><span class="icon2"></span>爱好</a>
+                        <a><span class="icon3"></span>联系我</a>
+                        <a><span class="icon4"></span>其他</a>
+                        <option></option>
+                        <option></option>
+                    </nav>
+                    <div class="content">
+                        <div class="text">
+                            <div class="text-right">
+                                <h4>Introduction</h4>
+                                <div class="clear"></div>
+                                <p>作者90后,目前个人从事java相关的工作,主要研究和工作的方向在java,
+                                    平时会学习一些新的技术或者框架,有时候会阅读一些java的经典书籍,以提高自己对于技术的理解.</p>
+                                <p>大学期间弄过一些乱七八糟的东西,非常遗憾的事情是没有去完成一个优质的作品,在今后的工作和生活中,可能会尝试更多的东西.大学期间android,python,linux,java等都略微学过一点点,目前主要规划是在java基础和java的一些框架学习中.</p>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="text">
+                            <div class="text-right">
+                                <h4>Skills</h4>
+                                <section class="container">
+                                    <div class="progress">
+                                        <span style="width: 40%;"><span>linux</span></span>
+                                    </div>
+
+                                    <div class="progress">
+                                        <span class="green" style="width: 50%;"><span>html</span></span>
+                                    </div>
+
+                                    <div class="progress">
+                                        <span class="red" style="width: 60%;"><span>android</span></span>
+                                    </div>
+
+                                    <div class="progress">
+                                        <span class="blue" style="width: 70%;"><span>java</span></span>
+                                    </div>
+                                    <div class="progress">
+                                        <span style="width: 15%;"><span>js</span></span>
+                                    </div>
+                                    <div class="progress">
+                                        <span style="width: 0%;"><span>python</span></span>
+                                    </div>
+                                </section>
+                                <div class="text_wrap" hidden>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="text">
+
+                            <div class="text-right">
+                                <h4>Hobby</h4>
+                                <div class="Hobby">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="content">
+                        <div class="text ">
+                            <div class="text-right">
+                                <h4>Connection</h4>
+                                <div class="myinfo">
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <td>微信 | Conquer_ing</td>
+                                        </tr>
+                                        <tr>
+                                            <td>邮箱 | nancheung97@gmail.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GitHub | <a href="https://github.com/nancheung97" target="view_window">nancheung97</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CSDN | <a href="https://blog.csdn.net/nan_cheung" target="view_window">nan_cheung</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="text ">
+
+                            <div class="text-right">
+                                <h4>Ohter Talk</h4>
+                                <p>个人博客终于搞定了！！！！</p>
+                                <p>感谢eumji的帮助</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer" th:replace="blog/part/footer :: footer"></footer>
+<script src="/js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $(".search-form").attr("hidden", true);
+        $("#search-form-wrap").attr("hidden", true);
+        $('.tabs nav a').on('click', function () {
+            show_content($(this).index());
+        });
+        show_content(0);
+
+        function show_content(index) {
+            // Make the content visible
+            $('.tabs .content.visible').removeClass('visible');
+            $('.tabs .content:nth-of-type(' + (index + 1) + ')').addClass('visible');
+
+            // Set the tab to selected
+            $('.tabs nav a.selected').removeClass('selected');
+            $('.tabs nav a:nth-of-type(' + (index + 1) + ')').addClass('selected');
+        }
+    });
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+</script>
+</body>
+</html>
