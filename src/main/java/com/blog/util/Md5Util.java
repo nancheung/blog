@@ -3,6 +3,7 @@ package com.blog.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 
@@ -29,7 +30,7 @@ public class Md5Util {
     private static String digest(String s) {
         char[] hexDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
         try {
-            byte[] btInput = s.getBytes();
+            byte[] btInput = s.getBytes(StandardCharsets.UTF_8);
             // 获得MD5摘要算法的 MessageDigest 对象
             MessageDigest mdInst = MessageDigest.getInstance("MD5");
             // 使用指定的字节更新摘要

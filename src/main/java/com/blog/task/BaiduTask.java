@@ -11,10 +11,15 @@ import org.springframework.stereotype.Component;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+
+import static java.net.HttpURLConnection.HTTP_OK;
 
 /**
  * 百度推送的工具类
  * application.yml文件中配置
+ *
+ * @author NanCheung
  */
 @Component
 public class BaiduTask {
@@ -26,6 +31,7 @@ public class BaiduTask {
     
     @Value("${url}")
     public String baseUrl;
+    
     @Autowired
     private ArticleService articleService;
     
@@ -66,24 +72,29 @@ public class BaiduTask {
      * @throws IOException
      */
     private void writerUrl(HttpURLConnection conn, String... ids) throws IOException {
-        PrintWriter out;
+        
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < ids.length; i++) {
-            sb.append(baseUrl + "/article/details/" + ids[i] + "\n");
+        for (String id : ids) {
+            sb.append(baseUrl).append("/article/details/").append(id).append("\n");
         }
         logger.info("百度推送的url为:{}", sb.toString());
         conn.connect();
-        out = new PrintWriter(conn.getOutputStream());
-        out.print(sb.toString().trim());
-        out.flush();
+        
+        try (PrintWriter out = new PrintWriter(new OutputStreamWriter(conn.getOutputStream(), StandardCharsets.UTF_8))) {
+            out.print(sb.toString().trim());
+        }
+        
         int code = conn.getResponseCode();
-        if (code == 200) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        if (code == HTTP_OK) {
             String line;
             StringBuilder r = new StringBuilder();
-            while ((line = in.readLine()) != null) {
-                r.append(line);
+            
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
+                while ((line = in.readLine()) != null) {
+                    r.append(line);
+                }
             }
+            
             logger.info("向百度推送返回内容：{}", r.toString());
             logger.info("the article url push success");
         } else {
