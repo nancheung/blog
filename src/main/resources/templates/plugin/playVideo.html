@@ -126,7 +126,7 @@
     function play(url) {
         $("#playUrl").attr("value", url);
         let $iframe = $("#iframeId");
-        $iframe.attr('src', 'http://yun.baiyug.cn/vip/index.php?url=' + url);
+        $iframe.attr('src', 'http://api.baiyug.vip/?url=' + url);
     }
 
     function removeAD() {
